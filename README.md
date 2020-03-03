@@ -1,14 +1,19 @@
 # Shift-Snapshot
-# Developed by: Matt Swezey
+### Author: Matt Swezey
 
 # Creating Snapshots
 ## Setup
-TODO
+* Have a Shift node installed as per instructions
 
 ## Usage
-TODO
+* Run `yarn createSnapshot`
 
 # Uploading Snapshots
+## Prereqs
+* Have a S3-type bucket access
+
+Note: Digital Ocean Spaces was used in the creation of this utility
+
 ## Setup
 Create `.env` file with the following properties: 
 ```

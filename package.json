@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "create": "",
+    "create": "chmod +x ./scripts/create-snapshot.sh && ./scripts/create-snapshot.sh",
     "upload": "node app.js"
   },
   "dependencies": {
