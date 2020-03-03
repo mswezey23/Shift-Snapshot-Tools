@@ -66,9 +66,8 @@ function uploadFile(fileData, fileName) {
     * Handles md5 checks, multipart uploads (concurrency), monitors progress
     */
   s3.upload(fileParam).on('httpUploadProgress', (evt) => {
-    // console.log('Progress:', evt.loaded, '/', evt.total);
-    // Keep writing to the same two lines in the console
     log(`Uploading Progress: ${evt.loaded} / ${evt.total}`);
+    console.log('\n');
   }).send((err, data) => {
     if (err) {
       console.log(err);
