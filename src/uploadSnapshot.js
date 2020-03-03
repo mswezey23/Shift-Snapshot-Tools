@@ -5,6 +5,7 @@ require('dotenv').config();
 const AWS = require('aws-sdk');
 const fs = require('fs');
 const prompt = require('prompt-sync')();
+const log = require('single-line-log').stdout;
 
 const endpoint = process.env.S3_ENDPOINT;
 const key = process.env.S3_KEY;
@@ -65,7 +66,9 @@ function uploadFile(fileData, fileName) {
     * Handles md5 checks, multipart uploads (concurrency), monitors progress
     */
   s3.upload(fileParam).on('httpUploadProgress', (evt) => {
-    console.log('Progress:', evt.loaded, '/', evt.total);
+    // console.log('Progress:', evt.loaded, '/', evt.total);
+    // Keep writing to the same two lines in the console
+    log(`Uploading Progress: ${evt.loaded} / ${evt.total}`);
   }).send((err, data) => {
     if (err) {
       console.log(err);
