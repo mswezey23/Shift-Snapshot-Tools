@@ -67,12 +67,12 @@ function uploadFile(fileData, fileName) {
     */
   s3.upload(fileParam).on('httpUploadProgress', (evt) => {
     log(`Uploading Progress: ${evt.loaded} / ${evt.total}`);
-    console.log('\n');
   }).send((err, data) => {
     if (err) {
       console.log(err);
       process.exit(1);
     } else {
+      console.log('\n');
       console.log('Success!');
       console.log(`URL: ${data.Location}`);
       process.exit(0);
