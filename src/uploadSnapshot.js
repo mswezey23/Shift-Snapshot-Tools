@@ -39,7 +39,7 @@ function getFile(fileName) {
   return fileData;
 }
 
-function uploadFile(fileData, fileName) {
+function uploadFile(fileData, fileName, bucketName) {
   // Configure client for use with DO Spaces
   const s3 = new AWS.S3({
     computeChecksums: true,
@@ -50,7 +50,7 @@ function uploadFile(fileData, fileName) {
 
   // requires a 'Body:' before upload
   const defaultParams = {
-    Bucket: `shift-mn-snapshot/${netType}`,
+    Bucket: `${bucketName}/${netType}`,
     Key: 'blockchain.db.gz',
     ACL: 'public-read',
   };
@@ -87,5 +87,7 @@ module.exports = function UploadToS3Bucket(fileName) {
   }
 
   const fileData = getFile(fileName);
-  uploadFile(fileData, fileName);
+  const bucketName = prompt('Enter bucket name: ');
+  console.log(`Bucket Name Entered: \n ${bucketName}`);
+  uploadFile(fileData, fileName, bucketName);
 };
